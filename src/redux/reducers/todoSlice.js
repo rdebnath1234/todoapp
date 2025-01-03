@@ -19,13 +19,15 @@ export const todoSlice = createSlice({
             state.data=state.data.filter(item=>item?.id!==action.payload.id)
             },
         updateTodo:(state,action)=>{
-            const [id,title,desc]=action.payload;
-            const index=state.data.findIndex(item=>item?.id===id);
-            if(index!==-1){
-                state.data[index]={...state.data[index],title,desc};
-            }
-        }
-    }
+            state.data=state.data.map(item=>{
+                if(item?.id===action.payload.id){
+                    item.title=action.payload.title;
+                    item.desc=action.payload.desc;
+                }
+                return item;
+            })
+            },
+        },
 });
 export const {addTodo,deleteTodo,updateTodo}=todoSlice.actions;
 export default todoSlice.reducer;

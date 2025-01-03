@@ -47,8 +47,8 @@ const ToDoItem = ({ item }) => {
         onRequestClose={() => setVisible(false)}
       >
         <View style={styles.modalcontainer}>
-        <AntDesign name="closecircle" style={styles.closeIcon} size={24} color="black" onPress={() => setVisible(false)} />
           <View style={{backgroundColor: "#fff", margin: 50, padding: 20, borderRadius: 10}}>
+          <AntDesign name="closecircle" style={styles.closeIcon} size={24} color="black" onPress={() => setVisible(false)} />
             <TextInput
               value={value}
               onChangeText={setValue}
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   modalcontainer: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent:"center",
   },
   input: {
     borderWidth: 1,
@@ -116,11 +117,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     fontSize: 20,
-    marginTop: 20,
+    marginTop: 30,
   },
   closeIcon:{
     position:'absolute',
-    right:10,
     top:10,
+    right:10,
   },
 });
