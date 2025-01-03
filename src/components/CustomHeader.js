@@ -19,8 +19,9 @@ const CustomHeader = ({title,isBackButton}) => {
 export default CustomHeader;
 const styles = StyleSheet.create({
   container: {
+    marginTop:30,
     backgroundColor: '#0090B0',
-    padding: 15,
+    padding: 25,
   },
   title: {
     color: 'white',

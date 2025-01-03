@@ -2,7 +2,11 @@ import { View, Text,StyleSheet, TextInput, Alert } from 'react-native'
 import React,{useState} from 'react'
 import CustomHeader from '../components/CustomHeader'
 import CustomButton from '../components/CustomButton'
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../redux/reducers/todoSlice'
+import { router } from 'expo-router'
 const Addtodo = () => {
+  const dispatch = useDispatch();
   const [value,setValue] = React.useState('')
   const [desc,setDesc] = React.useState('')
   const submit =async () => {
@@ -10,6 +14,11 @@ const Addtodo = () => {
         Alert.alert('Please fill all the fields');
         return;
       }
+      await dispatch(addTodo({
+        title:value,
+        desc:desc
+      }))
+      router.back();
   }
   return (
     <View style={styles.container}>
@@ -25,7 +34,7 @@ const Addtodo = () => {
       numberOfLines={4}
       multiline={true}
       maxLength={100}
-      placeholder="Enter your description here"
+      placeholder="Enter your todo description here"
       style={[styles.input,{minHeight:120}]} />
       <CustomButton title="ADD" onPress={submit}/>
     </View>
