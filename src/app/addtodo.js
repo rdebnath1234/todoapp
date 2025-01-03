@@ -9,7 +9,7 @@ const Addtodo = () => {
   const dispatch = useDispatch();
   const [value,setValue] = React.useState('')
   const [desc,setDesc] = React.useState('')
-  const submit =async () => {
+  const onSubmit =async () => {
       if(value.trim() == '' || desc.trim() == ''){
         Alert.alert('Please fill all the fields');
         return;
@@ -36,7 +36,7 @@ const Addtodo = () => {
       maxLength={100}
       placeholder="Enter your todo description here"
       style={[styles.input,{minHeight:120}]} />
-      <CustomButton title="ADD" onPress={submit}/>
+      <CustomButton title="ADD" onPress={onSubmit}/>
     </View>
   )
 }
